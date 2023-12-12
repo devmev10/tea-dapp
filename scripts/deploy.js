@@ -10,6 +10,7 @@ async function consoleBalances(addresses) {
 
   for (const address of addresses) {
     console.log(`Address ${counter} balance: `, await getBalances(address));
+    counter++;
   }
 }
 
@@ -41,6 +42,9 @@ async function main() {
   await contract.connect(from1).buyChai("from1", "yeah bro", amount);
   await contract.connect(from2).buyChai("from2", "what bro", amount);
   await contract.connect(from3).buyChai("from3", "yo bro", amount);
+
+  console.log("After buying chai");
+  await consoleBalances(addresses);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
