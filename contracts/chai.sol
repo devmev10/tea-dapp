@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-contract chai {
+contract Chai {
     struct Memo {
         string name;
         string message;
