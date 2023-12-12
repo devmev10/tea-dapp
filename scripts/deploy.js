@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 
 async function getBalances(address) {
   const balanceBigInt = await ethers.provider.getBalance(address);
-  return ethers.utils.formatEther(balanceBigInt);
+  return ethers.formatEther(balanceBigInt);
 }
 
 async function consoleBalances(addresses) {
@@ -33,12 +33,17 @@ async function main() {
 
   console.log("Address of contract: ", contract.address);
 
-  const addresses = [owner.address, from1.address];
+  const addresses = [
+    owner.address,
+    from1.address,
+    from2.address,
+    from3.address,
+  ];
 
   console.log("before buying chai");
   await consoleBalances(addresses);
 
-  const amount = { value: ethers.utils.parseEther("1") };
+  const amount = { value: ethers.parseEther("1") };
   await contract.connect(from1).buyChai("from1", "yeah bro", amount);
   await contract.connect(from2).buyChai("from2", "what bro", amount);
   await contract.connect(from3).buyChai("from3", "yo bro", amount);
