@@ -36,6 +36,11 @@ async function main() {
 
   console.log("before buying chai");
   await consoleBalances(addresses);
+
+  const amount = { value: ethers.utils.parseEther("1") };
+  await contract.connect(from1).buyChai("from1", "yeah bro", amount);
+  await contract.connect(from2).buyChai("from2", "what bro", amount);
+  await contract.connect(from3).buyChai("from3", "yo bro", amount);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
