@@ -1,5 +1,6 @@
 import "./App.css";
 
+import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
