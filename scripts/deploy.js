@@ -30,8 +30,9 @@ async function consoleMemos(memos) {
 async function main() {
   const [owner, from1, from2, from3] = await ethers.getSigners();
   const contract = await ethers.deployContract("Chai");
+  await contract.waitForDeployment();
 
-  console.log("Address of contract: ", contract.address);
+  console.log("Address of contract: ", contract.target);
 
   const addresses = [
     owner.address,
