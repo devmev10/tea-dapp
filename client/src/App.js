@@ -30,6 +30,8 @@ function App() {
           contractABI,
           signer
         );
+
+        setState({ provider, signer, contract });
       } catch (error) {}
     };
   }, []);
