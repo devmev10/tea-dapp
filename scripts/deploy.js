@@ -51,6 +51,9 @@ async function main() {
 
   console.log("After buying chai");
   await consoleBalances(addresses);
+
+  const memos = await contract.getMemos();
+  consoleMemos(memos);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
