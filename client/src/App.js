@@ -13,6 +13,8 @@ function App() {
     contract: null,
   });
 
+  const [account, setAccount] = useState("None");
+
   useEffect(() => {
     const connectWallet = async () => {
       const contractAddress = "0x4a5B09EF55Fcef35DB8359ea544EeEe34F45424F";
@@ -22,16 +24,29 @@ function App() {
           const account = await window.ethereum.request({
             method: "eth_requestAccounts",
           });
-        }
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        const signer = await provider.getSigner();
-        const contract = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer
-        );
+          setAccount(account);
 
-        setState({ provider, signer, contract });
+          // metamask code
+          window.ethereum.on("chainChanged", () => {
+            window.location.reload();
+          });
+
+          window.ethereum.on("accountChanged", () => {
+            window.location.reload();
+          });
+
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(
+            contractAddress,
+            contractABI,
+            signer
+          );
+
+          setState({ provider, signer, contract });
+        } else {
+          alert("Please install a wallet like metamask");
+        }
       } catch (error) {}
     };
 
