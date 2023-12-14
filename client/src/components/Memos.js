@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
 
 export default function Memos({ state }) {
   const [memos, setMemos] = useState([]);
@@ -9,9 +8,29 @@ export default function Memos({ state }) {
     async function memosMessage() {
       const memosFromContract = await contract.getMemos();
       setMemos(memosFromContract);
+      console.log("This is memosFromContract:", memosFromContract);
     }
 
     memosMessage();
+    console.log("This is memos:", memos);
   }, [contract]);
-  return <div>Memos</div>;
+
+  return (
+    <div>
+      <p>Messages:</p>
+      {memos &&
+        memos.map((memo) => (
+          <table key={memo.timestamp}>
+            <tbody>
+              <tr>
+                <td>{memo.name}</td>
+                <td>{memo.message}</td>
+                <td>{String(memo.timestamp)}</td>
+                <td>{memo.from}</td>
+              </tr>
+            </tbody>
+          </table>
+        ))}
+    </div>
+  );
 }
