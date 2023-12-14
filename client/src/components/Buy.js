@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 export default function Buy({ state }) {
-  async function buyChai() {}
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function buyChai() {
+    const { contract } = state;
+  }
 
   return (
     <div>
@@ -7,8 +14,24 @@ export default function Buy({ state }) {
         <label>
           {" "}
           Name:
-          <input type="text" placeholder="Enter your name" />
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </label>
+        <label>
+          {" "}
+          Message:
+          <input
+            type="text"
+            placeholder="Enter your message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </label>
+        <button type="submit">Pay</button>
       </form>
     </div>
   );
