@@ -44,7 +44,9 @@ export default function Buy({ state }) {
             onChange={(e) => setMessage(e.target.value)}
           />
         </label>
-        <button type="submit">Pay</button>
+        <button type="submit" disabled={!state.contract}>
+          Pay
+        </button>
       </form>
     </div>
   );
