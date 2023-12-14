@@ -15,6 +15,7 @@ export default function Buy({ state }) {
       value: ethers.parseEther("0.05"),
     });
 
+    console.log("this is transaction:", transaction);
     // wait for transaction to be mined
     await transaction.wait();
     console.log("transaction is mined");
