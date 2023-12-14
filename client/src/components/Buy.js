@@ -10,9 +10,14 @@ export default function Buy({ state }) {
     const { contract } = state;
     console.log(name, message, contract);
 
+    // send transaction
     const transaction = await contract.buyChai(name, message, {
       value: ethers.parseEther("0.05"),
     });
+
+    // wait for transaction to be mined
+    await transaction.wait();
+    console.log("transaction is mined");
   }
 
   return (
