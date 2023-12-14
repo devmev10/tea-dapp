@@ -3,6 +3,7 @@ import "./App.css";
 import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import Buy from "./components/Buy";
 
 function App() {
   const [state, setState] = useState({
@@ -37,7 +38,11 @@ function App() {
   }, []);
   console.log("This is the State variable:", state);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Buy state={state} />
+    </div>
+  );
 }
 
 export default App;
