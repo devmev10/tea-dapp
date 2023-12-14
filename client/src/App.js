@@ -57,6 +57,7 @@ function App() {
   return (
     <div className="App">
       <Buy state={state} />
+      <p>Connected account - {account}</p>
       <Memos state={state} />
     </div>
   );
