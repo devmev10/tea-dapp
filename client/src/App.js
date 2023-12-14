@@ -16,14 +16,12 @@ function App() {
       const contractAddress = "0x4a5B09EF55Fcef35DB8359ea544EeEe34F45424F";
       const contractABI = abi.abi;
       try {
-        const { ethereum } = window;
-
-        if (ethereum) {
-          const account = await ethereum.request({
+        if (window.ethereum) {
+          const account = await window.ethereum.request({
             method: "eth_requestAccounts",
           });
         }
-        const provider = new ethers.providers.Web3Provider(ethereum);
+        const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(
           contractAddress,
@@ -34,7 +32,10 @@ function App() {
         setState({ provider, signer, contract });
       } catch (error) {}
     };
+
+    connectWallet();
   }, []);
+  console.log("This is the State variable:", state);
 
   return <div className="App"></div>;
 }
