@@ -1,11 +1,18 @@
 import { useState } from "react";
+import { ethers } from "ethers";
 
 export default function Buy({ state }) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  async function buyChai() {
+  async function buyChai(e) {
+    e.preventDefault();
     const { contract } = state;
+    console.log(name, message, contract);
+
+    const transaction = await contract.buyChai(name, message, {
+      value: ethers.parseEther("0.05"),
+    });
   }
 
   return (
