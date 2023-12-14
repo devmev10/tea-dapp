@@ -26,11 +26,12 @@ function App() {
           });
           setAccount(account);
 
-          // metamask code
+          // metamask code for reloading
           window.ethereum.on("chainChanged", () => {
             window.location.reload();
           });
 
+          // metamask code for reloading
           window.ethereum.on("accountChanged", () => {
             window.location.reload();
           });
