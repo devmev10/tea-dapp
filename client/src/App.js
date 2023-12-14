@@ -4,6 +4,7 @@ import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Buy from "./components/Buy";
+import Memos from "./components/Memos";
 
 function App() {
   const [state, setState] = useState({
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <Buy state={state} />
+      <Memos state={state} />
     </div>
   );
 }
