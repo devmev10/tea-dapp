@@ -13,7 +13,6 @@ export default function Memos({ state }) {
 
       const memosFromContract = await contract.getMemos();
       setMemos(memosFromContract);
-      console.log("This is memosFromContract:", memosFromContract);
     }
 
     memosMessage();

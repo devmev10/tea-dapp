@@ -48,7 +48,9 @@ function App() {
         } else {
           alert("Please install a wallet like metamask");
         }
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     connectWallet();
