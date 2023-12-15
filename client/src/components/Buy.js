@@ -8,7 +8,6 @@ export default function Buy({ state }) {
   async function buyChai(e) {
     e.preventDefault();
     const { contract } = state;
-    console.log(name, message, contract);
 
     // send transaction
     const transaction = await contract.buyChai(name, message, {
