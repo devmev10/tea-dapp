@@ -55,7 +55,6 @@ function App() {
 
     connectWallet();
   }, []);
-  console.log("This is the State variable:", state);
 
   return (
     <div className="App">
