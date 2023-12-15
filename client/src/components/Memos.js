@@ -16,7 +16,6 @@ export default function Memos({ state }) {
     }
 
     memosMessage();
-    console.log("This is memos:", memos);
   }, [contract]);
 
   return (
