@@ -58,9 +58,20 @@ function App() {
 
   return (
     <div className="App">
-      <Buy state={state} />
-      <p>Connected account - {account}</p>
-      <Memos state={state} />
+      <header className="App-header">
+        <h1>Welcome to Chai Purchasing Portal</h1>
+      </header>
+      <main className="App-main">
+        <section className="App-section">
+          <Buy state={state} />
+        </section>
+        <section className="App-section">
+          <Memos state={state} />
+        </section>
+      </main>
+      <footer className="App-footer">
+        <p>© 2023 Chai Purchase App. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
