@@ -7,7 +7,10 @@ const DarkDiv = styled.div`
   padding: 20px;
   border-radius: 5px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the component horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content vertically */
 `;
 
 const MessagesHeading = styled.p`
@@ -21,15 +24,19 @@ const MemoContainer = styled.div`
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
+  overflow-wrap: break-word; /* Ensure text wraps on smaller screens */
 `;
 
 const MemoDetails = styled.p`
   margin: 5px 0;
   line-height: 1.5;
+  word-break: break-all; /* Break long words */
 `;
 
 const MemoProperty = styled.span`
   font-weight: bold;
+  display: inline-block;
+  min-width: 100px; /* Set minimum width for the property label */
 `;
 
 export default function Memos({ state }) {

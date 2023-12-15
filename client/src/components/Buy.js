@@ -75,7 +75,7 @@ export default function Buy({ state }) {
 
   return (
     <Container>
-      <Form onSubmit={buyChai}>
+      <Form onSubmit={buyChai} style={{ maxWidth: "100%" }}>
         <InputContainer>
           <Label htmlFor="name">Name:</Label>
           <Input
