@@ -25,7 +25,6 @@ export default function Buy({ state }) {
     <div>
       <form onSubmit={buyChai}>
         <label>
-          {" "}
           Name:
           <input
             type="text"
@@ -35,7 +34,6 @@ export default function Buy({ state }) {
           />
         </label>
         <label>
-          {" "}
           Message:
           <input
             type="text"
