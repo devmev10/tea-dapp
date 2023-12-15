@@ -6,6 +6,11 @@ export default function Memos({ state }) {
 
   useEffect(() => {
     async function memosMessage() {
+      if (!contract) {
+        console.log("Contract has not initialised yet");
+        return;
+      }
+
       const memosFromContract = await contract.getMemos();
       setMemos(memosFromContract);
       console.log("This is memosFromContract:", memosFromContract);
