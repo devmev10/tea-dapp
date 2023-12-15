@@ -46,7 +46,7 @@ function App() {
 
           setState({ provider, signer, contract });
         } else {
-          alert("Please install a wallet like metamask");
+          alert("Please install metamask wallet");
         }
       } catch (error) {
         console.log(error);
