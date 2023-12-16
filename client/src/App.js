@@ -163,7 +163,10 @@ function App() {
             </section>
           </main>
           <footer className="App-footer">
-            <p>© 2023 Tea Dapp. All rights reserved.</p>
+            <p>
+              © 2023 Tea Dapp. All rights reserved. Created by Founder of{" "}
+              <a href="https://aitravel.live">aiTravel</a>
+            </p>
           </footer>
         </div>
       )}
