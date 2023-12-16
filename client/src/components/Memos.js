@@ -57,6 +57,12 @@ export default function Memos({ state }) {
     memosMessage();
   }, [contract]);
 
+  // format the timestamp
+  const formattedDateTime = (timestamp) => {
+    const date = new Date(Number(timestamp) * 1000); // Convert BigInt to number and seconds to milliseconds
+    return date.toLocaleString("en-GB"); // Use 'en-GB' locale to format the date in DD/MM/YYYY format
+  };
+
   return (
     <DarkDiv>
       <MessagesHeading>Messages:</MessagesHeading>
@@ -70,7 +76,8 @@ export default function Memos({ state }) {
               <MemoProperty>Message:</MemoProperty> {memo.message}
             </MemoDetails>
             <MemoDetails>
-              <MemoProperty>Timestamp:</MemoProperty> {String(memo.timestamp)}
+              <MemoProperty>Timestamp:</MemoProperty>{" "}
+              {formattedDateTime(memo.timestamp)}
             </MemoDetails>
             <MemoDetails>
               <MemoProperty>From:</MemoProperty> {memo.from}
