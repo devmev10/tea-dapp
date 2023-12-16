@@ -1,14 +1,17 @@
+/* App.css */
+/* Dark Theme Styles */
+
 .App {
-  text-align: center;
-  font-family: "Roboto", sans-serif; /* Stylish font */
+  font-family: "Roboto", sans-serif;
+  background-color: #121212; /* Dark background for the app */
+  color: #e0e0e0; /* Lighter text color for readability */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f4f4f4; /* Light background for contrast */
 }
 
 .App-header {
-  background-color: #00695c; /* Vibrant green */
+  background-color: #1c1c1c; /* Slightly lighter dark shade for header */
   padding: 20px;
   color: white;
 }
@@ -27,25 +30,24 @@
   margin: 10px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #ffffff; /* White background for sections */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  background-color: #1c1c1c; /* Matching the header color */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Soft white shadow for depth */
 }
 
 .App-footer {
-  background-color: #004d40; /* Darker green for footer */
+  background-color: #1c1c1c; /* Matching the header and section colors */
   color: white;
   padding: 10px 0;
   text-align: center;
   font-size: 0.8em;
 }
 
-/* Hover effect for buttons */
 .button-hover-effect:hover {
-  background-color: #004d40;
+  background-color: #333;
+  color: #fff;
   transition: background-color 0.3s;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .App-header,
   .App-footer {

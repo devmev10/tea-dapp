@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const DarkDiv = styled.div`
-  background-color: #004d40; /* Dark green background */
-  color: #fff;
+  background-color: #1c1c1c; /* Dark theme background */
+  color: #e0e0e0; /* Light text for better visibility */
   padding: 20px;
   border-radius: 5px;
   max-width: 800px;

@@ -5,12 +5,13 @@ import Confetti from "react-confetti";
 
 // Styled components
 const Container = styled.div`
-  background-color: #1f1f1f;
+  background-color: #004d40; /* Dark green background */
   color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const Form = styled.form`
@@ -25,29 +26,30 @@ const InputContainer = styled.div`
 const Label = styled.label`
   display: block;
   margin-bottom: 5px;
+  color: #fff; /* White label for better contrast */
 `;
 
 const Input = styled.input`
-  width: calc(
-    100% - 22px
-  ); /* Adjust the width to account for padding and borders */
+  width: 100%; /* Full width of the container */
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid #333333;
-  background-color: #333333;
-  color: #ffffff;
+  border: 1px solid #333;
+  background-color: #fff; /* White input background */
+  color: #333; /* Dark text for readability */
+  box-sizing: border-box; /* Include padding and border in the element's width and height */
 `;
+
 const SubmitButton = styled.button`
   padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #3f51b5;
+  background-color: #00796b; /* Lighter green for button */
   color: #ffffff;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #6573c3;
+    background-color: #004d40; /* Dark green on hover */
   }
 
   &:disabled {
