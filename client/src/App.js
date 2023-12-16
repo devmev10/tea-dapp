@@ -6,11 +6,18 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Buy from "./components/Buy";
 import Memos from "./components/Memos";
+import backgroundImage from "./images/tea.jpg";
 
 const HeaderWrapper = styled.header`
-  background-color: #1c1c1c; // Updated color
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      /* Dark overlay */ rgba(0, 0, 0, 0.5)
+    ),
+    url(${backgroundImage});
+  background-size: cover; // Cover the entire area of the header
+  background-position: center; // Center the image
   color: white;
-  padding: 20px;
+  padding: 40px 20px; // Increased padding to make header taller
   text-align: center;
 `;
 
@@ -28,6 +35,7 @@ const HeaderContent = styled.div`
 const Heading = styled.h1`
   margin: 0;
   text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); // Add shadow to text for better legibility
 `;
 
 const WalletStatus = styled.p`
