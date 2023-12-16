@@ -44,7 +44,7 @@ function App() {
     contract: null,
   });
 
-  const [isSepoliaNetwork, setIsSepoliaNetwork] = useState(true);
+  const [isSepoliaNetwork, setIsSepoliaNetwork] = useState(false);
 
   const [account, setAccount] = useState(null);
 
@@ -60,6 +60,19 @@ function App() {
             method: "eth_chainId",
           });
           setIsSepoliaNetwork(parseInt(chainId, 16) === SEPOLIA_CHAIN_ID);
+
+          if (parseInt(chainId, 16) !== SEPOLIA_CHAIN_ID) {
+            try {
+              await window.ethereum.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: SEPOLIA_CHAIN_ID }], // Switch to Sepolia network
+              });
+              window.location.reload();
+            } catch (error) {
+              console.error("Failed to switch network:", error);
+            }
+          }
+          // end of sepolia network check logic
 
           const account = await window.ethereum.request({
             method: "eth_requestAccounts",
@@ -100,27 +113,32 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderWrapper>
-        <HeaderContent>
-          <Heading>Welcome to Tea Dapp</Heading>
-          <WalletStatus>
-            {account !== null
-              ? `Connected to: ${account[0]}`
-              : "Please connect your wallet"}
-          </WalletStatus>
-        </HeaderContent>
-      </HeaderWrapper>
-      <main className="App-main">
-        <section className="App-section">
-          <Buy state={state} />
-        </section>
-        <section className="App-section">
-          <Memos state={state} />
-        </section>
-      </main>
-      <footer className="App-footer">
-        <p>© 2023 Tea Dapp. All rights reserved.</p>
-      </footer>
+      {!isSepoliaNetwork && <h1>Please Switch to SEPOLIA Test Network</h1>}
+      {isSepoliaNetwork && (
+        <div>
+          <HeaderWrapper>
+            <HeaderContent>
+              <Heading>Welcome to Tea Dapp</Heading>
+              <WalletStatus>
+                {account !== null
+                  ? `Connected to: ${account[0]}`
+                  : "Please connect your wallet"}
+              </WalletStatus>
+            </HeaderContent>
+          </HeaderWrapper>
+          <main className="App-main">
+            <section className="App-section">
+              <Buy state={state} />
+            </section>
+            <section className="App-section">
+              <Memos state={state} />
+            </section>
+          </main>
+          <footer className="App-footer">
+            <p>© 2023 Tea Dapp. All rights reserved.</p>
+          </footer>
+        </div>
+      )}
     </div>
   );
 }
