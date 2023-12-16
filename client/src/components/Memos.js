@@ -64,11 +64,14 @@ export default function Memos({ state }) {
     return date.toLocaleString("en-GB"); // Use 'en-GB' locale to format the date in DD/MM/YYYY format
   };
 
+  // Create a reversed copy of the memos array
+  const reversedMemos = [...memos].reverse();
+
   return (
     <DarkDiv>
       <MessagesHeading>Messages:</MessagesHeading>
       {memos &&
-        memos.map((memo) => (
+        reversedMemos.map((memo) => (
           <MemoContainer key={memo.timestamp}>
             <MemoDetails>
               <MemoProperty>Name:</MemoProperty> {memo.name}
