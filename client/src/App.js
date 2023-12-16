@@ -47,6 +47,7 @@ function App() {
   const [isSepoliaNetwork, setIsSepoliaNetwork] = useState(false);
 
   const [account, setAccount] = useState(null);
+  const [metaMaskInstalled, setMetaMaskInstalled] = useState(true);
 
   useEffect(() => {
     const connectWallet = async () => {
@@ -101,7 +102,8 @@ function App() {
 
           setState({ provider, signer, contract });
         } else {
-          alert("Please install metamask wallet");
+          setMetaMaskInstalled(false); // Set MetaMask installed to false
+          console.log("MetaMask not installed.");
         }
       } catch (error) {
         console.log(error);
@@ -113,8 +115,26 @@ function App() {
 
   return (
     <div className="App">
-      {!isSepoliaNetwork && <h1>Please Switch to SEPOLIA Test Network</h1>}
-      {isSepoliaNetwork && (
+      {!metaMaskInstalled && (
+        <div>
+          <h1>MetaMask Required</h1>
+          <p>
+            To use this DApp, please install MetaMask.
+            <br />
+            <a
+              href="https://metamask.io/download.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download MetaMask
+            </a>
+          </p>
+        </div>
+      )}
+      {metaMaskInstalled && !isSepoliaNetwork && (
+        <h1>Please Switch to SEPOLIA Test Network</h1>
+      )}
+      {metaMaskInstalled && isSepoliaNetwork && (
         <div>
           <HeaderWrapper>
             <HeaderContent>
