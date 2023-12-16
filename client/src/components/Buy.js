@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 import styled from "styled-components";
+import Confetti from "react-confetti";
 
 // Styled components
 const Container = styled.div`
@@ -58,9 +59,12 @@ const SubmitButton = styled.button`
 export default function Buy({ state }) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   async function buyChai(e) {
     e.preventDefault();
+    setIsLoading(true); // Start loading
     const { contract } = state;
 
     try {
@@ -76,7 +80,17 @@ export default function Buy({ state }) {
       // wait for transaction to be mined
       const reciept = await transaction.wait();
       console.log("transaction is mined. Receipt:", reciept);
+
+      setIsLoading(false);
+      setShowConfetti(true);
+
+      setTimeout(() => {
+        setShowConfetti(false);
+        window.location.reload();
+      }, 5000); // Show confetti for 5 seconds, then reload
     } catch (error) {
+      setIsLoading(false);
+
       if (error.code === 4001) {
         console.log("Transaction rejected by user");
       } else {
@@ -87,6 +101,9 @@ export default function Buy({ state }) {
 
   return (
     <Container>
+      {isLoading && <p>Hold on...</p>}
+      {/* Replace with spinner component later */}
+      {showConfetti && <Confetti />}
       <Form onSubmit={buyChai} style={{ maxWidth: "100%" }}>
         <InputContainer>
           <Label htmlFor="name">Name:</Label>
@@ -110,7 +127,7 @@ export default function Buy({ state }) {
             onChange={(e) => setMessage(e.target.value)}
           />
         </InputContainer>
-        <SubmitButton type="submit" disabled={!state.contract}>
+        <SubmitButton type="submit" disabled={!state.contract || isLoading}>
           Pay
         </SubmitButton>
       </Form>
