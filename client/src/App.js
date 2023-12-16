@@ -25,6 +25,7 @@ function App() {
             method: "eth_requestAccounts",
           });
           setAccount(account);
+          console.log("account:", account);
 
           // metamask code for reloading
           window.ethereum.on("chainChanged", () => {
@@ -61,6 +62,7 @@ function App() {
       <header className="App-header">
         <h1>Welcome to Chai Purchasing Portal</h1>
       </header>
+      <p>Connected to: {account[0]}</p>
       <main className="App-main">
         <section className="App-section">
           <Buy state={state} />
