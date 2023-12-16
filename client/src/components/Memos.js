@@ -31,6 +31,7 @@ const MemoDetails = styled.p`
   margin: 5px 0;
   line-height: 1.5;
   word-break: break-all; /* Break long words */
+  text-align: left; /* Align text to the left */
 `;
 
 const MemoProperty = styled.span`
