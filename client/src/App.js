@@ -60,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Chai Purchasing Portal</h1>
+        <h1>Welcome to Tea Dapp</h1>
       </header>
       <p>Connected to: {account[0]}</p>
       <main className="App-main">
