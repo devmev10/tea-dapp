@@ -63,14 +63,26 @@ export default function Buy({ state }) {
     e.preventDefault();
     const { contract } = state;
 
-    // send transaction
-    const transaction = await contract.buyChai(name, message, {
-      value: ethers.parseEther("0.05"),
-    });
+    try {
+      // send transaction
 
-    // wait for transaction to be mined
-    await transaction.wait();
-    console.log("transaction is mined");
+      if (!contract) {
+        return;
+      }
+      const transaction = await contract.buyChai(name, message, {
+        value: ethers.parseEther("0.05"),
+      });
+
+      // wait for transaction to be mined
+      const reciept = await transaction.wait();
+      console.log("transaction is mined. Receipt:", reciept);
+    } catch (error) {
+      if (error.code === 4001) {
+        console.log("Transaction rejected by user");
+      } else {
+        console.error("Transaction error:", error);
+      }
+    }
   }
 
   return (
