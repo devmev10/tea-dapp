@@ -1,10 +1,41 @@
 import "./App.css";
+import styled from "styled-components";
 
 import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Buy from "./components/Buy";
 import Memos from "./components/Memos";
+
+const HeaderWrapper = styled.header`
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const Heading = styled.h1`
+  margin: 0;
+  text-align: center;
+`;
+
+const WalletStatus = styled.p`
+  margin: 0;
+
+  @media screen and (max-width: 600px) {
+    text-align: center;
+  }
+`;
 
 function App() {
   const [state, setState] = useState({
@@ -13,7 +44,7 @@ function App() {
     contract: null,
   });
 
-  const [account, setAccount] = useState("None");
+  const [account, setAccount] = useState(null);
 
   useEffect(() => {
     const connectWallet = async () => {
@@ -59,10 +90,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Tea Dapp</h1>
-      </header>
-      <p>Connected to: {account[0]}</p>
+      <HeaderWrapper>
+        <HeaderContent>
+          <Heading>Welcome to Tea Dapp</Heading>
+          <WalletStatus>
+            {account !== null
+              ? `Connected to: ${account[0]}`
+              : "Please connect your wallet"}
+          </WalletStatus>
+        </HeaderContent>
+      </HeaderWrapper>
       <main className="App-main">
         <section className="App-section">
           <Buy state={state} />
