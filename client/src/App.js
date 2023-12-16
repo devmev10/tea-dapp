@@ -44,6 +44,8 @@ function App() {
     contract: null,
   });
 
+  const [isSepoliaNetwork, setIsSepoliaNetwork] = useState(true);
+
   const [account, setAccount] = useState(null);
 
   useEffect(() => {
@@ -52,9 +54,17 @@ function App() {
       const contractABI = abi.abi;
       try {
         if (window.ethereum) {
+          // Check if selected metamask network is Sepolia
+          const SEPOLIA_CHAIN_ID = 11155111;
+          const chainId = await window.ethereum.request({
+            method: "eth_chainId",
+          });
+          setIsSepoliaNetwork(parseInt(chainId, 16) === SEPOLIA_CHAIN_ID);
+
           const account = await window.ethereum.request({
             method: "eth_requestAccounts",
           });
+
           setAccount(account);
           console.log("account:", account);
 
