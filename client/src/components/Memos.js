@@ -2,29 +2,29 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const DarkDiv = styled.div`
-  background-color: #222;
+  background-color: #004d40; /* Dark green background */
   color: #fff;
   padding: 20px;
   border-radius: 5px;
   max-width: 800px;
-  margin: 0 auto; /* Center the component horizontally */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content vertically */
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const MessagesHeading = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Slightly larger for better readability */
   margin-bottom: 15px;
   text-align: center;
+  font-weight: bold;
 `;
 
 const MemoContainer = styled.div`
-  border: 1px solid #444;
+  border: 1px solid #333;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  overflow-wrap: break-word; /* Ensure text wraps on smaller screens */
+  background-color: #fff; /* White background for contrast */
+  color: #333; /* Dark text for readability */
 `;
 
 const MemoDetails = styled.p`

@@ -8,9 +8,10 @@ import Buy from "./components/Buy";
 import Memos from "./components/Memos";
 
 const HeaderWrapper = styled.header`
-  background-color: #007bff;
+  background-color: #00796b; // Updated color
   color: white;
   padding: 20px;
+  text-align: center;
 `;
 
 const HeaderContent = styled.div`
