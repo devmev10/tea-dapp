@@ -69,7 +69,6 @@ export default function Buy({ state }) {
 
     try {
       // send transaction
-
       if (!contract) {
         return;
       }
@@ -103,7 +102,11 @@ export default function Buy({ state }) {
     <Container>
       {isLoading && <p>Hold on...</p>}
       {/* Replace with spinner component later */}
-      {showConfetti && <Confetti />}
+      {showConfetti && (
+        <>
+          <Confetti /> <p>Transaction Successful!</p>
+        </>
+      )}
       <Form onSubmit={buyChai} style={{ maxWidth: "100%" }}>
         <InputContainer>
           <Label htmlFor="name">Name:</Label>
