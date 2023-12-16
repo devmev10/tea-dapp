@@ -80,7 +80,6 @@ function App() {
           });
 
           setAccount(account);
-          console.log("account:", account);
 
           // metamask code for reloading
           window.ethereum.on("chainChanged", () => {
