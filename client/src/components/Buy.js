@@ -93,6 +93,7 @@ export default function Buy({ state }) {
           <Input
             type="text"
             id="name"
+            required
             placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -103,6 +104,7 @@ export default function Buy({ state }) {
           <Input
             type="text"
             id="message"
+            required
             placeholder="Enter your message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
