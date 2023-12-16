@@ -8,7 +8,7 @@ import Buy from "./components/Buy";
 import Memos from "./components/Memos";
 
 const HeaderWrapper = styled.header`
-  background-color: #00796b; // Updated color
+  background-color: #1c1c1c; // Updated color
   color: white;
   padding: 20px;
   text-align: center;

@@ -5,8 +5,8 @@ import Confetti from "react-confetti";
 
 // Styled components
 const Container = styled.div`
-  background-color: #004d40; /* Dark green background */
-  color: #ffffff;
+  background-color: #1c1c1c; /* Dark theme background */
+  color: #e0e0e0; /* Light text for better visibility */
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
