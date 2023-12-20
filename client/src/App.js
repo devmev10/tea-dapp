@@ -82,7 +82,7 @@ function App() {
               console.error("Failed to switch network:", error);
             }
           }
-          // end of sepolia network check logic
+          // end of sepolia network check logic--
 
           const account = await window.ethereum.request({
             method: "eth_requestAccounts",
