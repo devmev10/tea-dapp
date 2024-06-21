@@ -17,7 +17,7 @@ contract Chai {
     }
 
     function buyChai(string memory name, string memory message) public payable {
-        require(msg.value > 0, "Please pay greater than 0 ethers");
+        require(msg.value > 0, "Please pay greater than 0 ethers value");
         owner.transfer(msg.value);
 
         memos.push(Memo(name, message, block.timestamp, msg.sender));
